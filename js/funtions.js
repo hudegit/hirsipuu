@@ -26,10 +26,15 @@ const newGame = () => {
     console.log(randomizedWord)
     output.innerHTML = maskedWord
     guessCount = 0
+    updateGuessCount()
+}
+
+const updateGuessCount = () => {
+    span.textContent = guessCount
 }
 
 const win = () => {
-    alert(`Olet arvannut oikein, sana on ${randomizedWord}.`)
+    alert(`Olet arvannut oikein, sana on ${randomizedWord}. Arvauksien määrä on ${guessCount - 1}`)
     newGame()
 }
 
@@ -46,7 +51,7 @@ const replaceFoundChars = (guess) => {
     output.innerHTML = maskedWord
 }
 
-// newGame()
+newGame()
 
 input.addEventListener('keypress',(e) => {
     if (e.key === 'Enter') {
@@ -54,6 +59,7 @@ input.addEventListener('keypress',(e) => {
 
         const guess = input.value
         guessCount++
+        updateGuessCount()
         if (guess.toLowerCase() === randomizedWord.toLowerCase()) {
             win()
 
