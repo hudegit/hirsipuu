@@ -20,7 +20,7 @@ let maskedWord = ''
 let guessCount = 0
 
 const newGame = () => {
-    const random = Math.floor(Math.random() * 10) + 1
+    const random = Math.floor(Math.random() * words.length) + 1
     randomizedWord = words[random]
     maskedWord = "*".repeat(randomizedWord.length)
     console.log(randomizedWord)
